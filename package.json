@@ -11,7 +11,9 @@
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.4.0",
     "react-scripts": "2.1.8",
-    "simpl-schema": "^1.5.5"
+    "redux": "^4.0.1",
+    "simpl-schema": "^1.5.5",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

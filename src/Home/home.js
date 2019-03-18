@@ -1,17 +1,12 @@
 import React from 'react';
-import {Switch,Router, Route, Link } from "react-router-dom";
-import { ToDoHeader } from './header';
+// import {Switch,Router, Route, Link } from "react-router-dom";
 import {Container,Row,Col} from 'react-bootstrap';
-import {ToDoList} from './ToDoLists/toDo';
-import { DoneList } from './ToDoLists/done';
+import ToDoHeader from './header';
+import ToDoList from './ToDoLists/toDo';
+import DoneList from './ToDoLists/done';
 import { DeletedList } from './ToDoLists/deleted';
 export class ToDoHome extends React.Component
 {
-    constructor(props)
-    {
-        super(props);
-
-    }
     render()
     {
         return(

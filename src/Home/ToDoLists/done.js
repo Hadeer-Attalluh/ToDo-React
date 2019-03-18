@@ -1,23 +1,30 @@
 import React from 'react';
 import { Card, ListGroup } from 'react-bootstrap';
+import ToDoTask from '../ToDoTask/task';
+
+import {connect} from 'react-redux';
 
 export class DoneList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            list: [],
-        }
-    }
+
     render() {
+        // debugger
         return (
             <Card>
                 <Card.Header className="bg-dark text-light">Done List</Card.Header>
                 <ListGroup variant="flush">
-                    <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                    <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                    <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                    {
+                        this.props.todos.filter(task=>(task.complete&& !task.deleted)).map(task => <ToDoTask {...task} />)
+                    }
                 </ListGroup>
             </Card>
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        todos:state.todos
+    }
+}
+
+export default connect(mapStateToProps)(DoneList);
