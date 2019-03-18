@@ -28,6 +28,7 @@ export class ToDoHeader extends React.Component {
                 complete: false,
                 deleted: false
             }
+            this.setState({task:""});
             this.props.setData(newTask);
         }
     }

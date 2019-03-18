@@ -4,7 +4,7 @@ import {Container,Row,Col} from 'react-bootstrap';
 import ToDoHeader from './header';
 import ToDoList from './ToDoLists/toDo';
 import DoneList from './ToDoLists/done';
-import { DeletedList } from './ToDoLists/deleted';
+import DeletedList from './ToDoLists/deleted';
 export class ToDoHome extends React.Component
 {
     render()

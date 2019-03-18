@@ -4,6 +4,8 @@ import { Form,ListGroup } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {CompleteToDoAction} from '../../Store/Actions/todo';
 import {UncompleteToDoAction} from '../../Store/Actions/todo';
+import {DeleteToDoAction} from '../../Store/Actions/todo';
+import {unDeleteToDoAction} from '../../Store/Actions/todo';
 
 export class ToDoTask extends React.Component {
     constructor(props) {
@@ -12,6 +14,7 @@ export class ToDoTask extends React.Component {
         //     ...this.props
         // }
         this.onChange = this.onChange.bind(this);
+        this.onDelete = this.onDelete.bind(this);
     }
 
     onChange(e) {      
@@ -25,6 +28,20 @@ export class ToDoTask extends React.Component {
                 this.props.undone(this.props.id);
             }
     }
+    onDelete()
+    {
+        console.log(this.props)
+        if(!this.props.deleted)
+        {
+            //toggle
+            this.props.delete(this.props.id);
+        }
+        else
+        {
+            debugger;
+            this.props.undelete(this.props.id);
+        }
+    }
     render() {
         debugger
         return (
@@ -36,8 +53,9 @@ export class ToDoTask extends React.Component {
                     name="complete"
                     onChange={this.onChange}
                     checked={this.props.complete}
+                    disabled={this.props.deleted}
                 />
-                <i className="fas fa-trash-alt"></i>
+                <i className="fas fa-trash-alt" onClick={this.onDelete}>{(this.props.deleted?"Undelete":"Delete")}</i>
             </ListGroup.Item>
         );
     }
@@ -46,7 +64,9 @@ export class ToDoTask extends React.Component {
 const mapDispatchToProps = dispatch => (
     {
         done: id => dispatch(CompleteToDoAction(id)),
-        undone: id=> dispatch(UncompleteToDoAction(id))
+        undone: id=> dispatch(UncompleteToDoAction(id)),
+        delete: id=> dispatch(DeleteToDoAction(id)),
+        undelete: id=> dispatch(unDeleteToDoAction(id)),
     }
 )
 
